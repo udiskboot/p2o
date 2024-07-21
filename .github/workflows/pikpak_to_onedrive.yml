@@ -13,9 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Set up Rclone
       run: |
+        # Install rclone
+        curl https://rclone.org/install.sh | sudo bash
+        
+        # Create rclone config directory
         mkdir -p ~/.config/rclone
+        
+        # Write rclone config
         echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
     - name: Transfer files from PikPak to OneDrive
