@@ -28,9 +28,13 @@ jobs:
     - name: List Configured Remotes
       run: rclone listremotes
 
+    - name: Check Rclone Version
+      run: rclone version
+
     - name: Transfer files from PikPak to OneDrive
       run: |
-        rclone copy p:${{ github.event.inputs.path }} o:${{ github.event.inputs.path }} --verbose
+        rclone copy p:${{ github.event.inputs.path }} o:${{ github.event.inputs.path }} --verbose --log-file=rclone.log
+        cat rclone.log
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v1.2.3
