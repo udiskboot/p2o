@@ -1,4 +1,4 @@
-name: Transfer Files from PikPak to OneDrive
+name: Tranksfer Files from PikPak to OneDrive
 
 on:
   workflow_dispatch:
