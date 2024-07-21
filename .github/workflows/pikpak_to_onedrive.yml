@@ -1,0 +1,22 @@
+name: Transfer Files from PikPak to OneDrive
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小时运行一次，你可以根据需要调整时间
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Rclone
+      run: |
+        mkdir -p ~/.config/rclone
+        echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+
+    - name: Transfer files from PikPak to OneDrive
+      run: |
+        rclone copy p:/path/to/files ${{ secrets.RCLONE_DESTINATION }} --verbose
