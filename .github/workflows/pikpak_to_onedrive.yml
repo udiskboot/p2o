@@ -20,18 +20,16 @@ jobs:
       run: |
         curl https://rclone.org/install.sh | sudo bash
         mkdir -p ~/.config/rclone
-        # Create Rclone configuration file with a heredoc
-        cat <<EOF > ~/.config/rclone/rclone.conf
-[p]
-type = pikpak
-user = udiskboot@gmail.com
-pass = 1nhhx-0rSNold8UegWVDKnJCkWNaQKEh
-token = {"access_token":"<pikpak_access_token>","refresh_token":"<pikpak_refresh_token>","expiry":"<pikpak_expiry_date>"}
-
-[o]
-type = onedrive
-token = {"access_token":"<onedrive_access_token>","refresh_token":"<onedrive_refresh_token>","expiry":"<onedrive_expiry_date>"}
-EOF
+        # Write Rclone configuration file
+        echo '[p]' > ~/.config/rclone/rclone.conf
+        echo 'type = pikpak' >> ~/.config/rclone/rclone.conf
+        echo 'user = udiskboot@gmail.com' >> ~/.config/rclone/rclone.conf
+        echo 'pass = 1nhhx-0rSNold8UegWVDKnJCkWNaQKEh' >> ~/.config/rclone/rclone.conf
+        echo 'token = {"access_token":"<pikpak_access_token>","refresh_token":"<pikpak_refresh_token>","expiry":"<pikpak_expiry_date>"}' >> ~/.config/rclone/rclone.conf
+        echo '' >> ~/.config/rclone/rclone.conf
+        echo '[o]' >> ~/.config/rclone/rclone.conf
+        echo 'type = onedrive' >> ~/.config/rclone/rclone.conf
+        echo 'token = {"access_token":"<onedrive_access_token>","refresh_token":"<onedrive_refresh_token>","expiry":"<onedrive_expiry_date>"}' >> ~/.config/rclone/rclone.conf
 
     - name: Verify Rclone Configuration
       run: |
