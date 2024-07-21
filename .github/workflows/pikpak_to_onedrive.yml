@@ -21,7 +21,8 @@ jobs:
         curl https://rclone.org/install.sh | sudo bash
         mkdir -p ~/.config/rclone
         # Write Rclone configuration file
-        echo '[p]
+        echo '
+        [p]
 type = pikpak
 user = udiskboot@gmail.com
 pass = 1nhhx-0rSNold8UegWVDKnJCkWNaQKEh
