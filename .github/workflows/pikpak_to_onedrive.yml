@@ -43,13 +43,7 @@ jobs:
 
     - name: Transfer files from PikPak to OneDrive
       run: |
-        rclone copy p:/My o:/My --verbose --log-file=rclone.log || true
+         rclone copy p:${{ github.event.inputs.path }} o:${{ github.event.inputs.path }} --verbose --log-file=rclone.log || true
         cat rclone.log
 
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v1.2.3
-      with:
-        token: ${{ github.token }}
-        repository: ${{ github.repository }}
-        retain_days: 0
-        keep_minimum_runs: 0
+  
