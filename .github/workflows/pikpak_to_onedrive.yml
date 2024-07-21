@@ -43,7 +43,7 @@ jobs:
 
     - name: Transfer files from PikPak to OneDrive
       run: |
-         rclone copy p:${{ github.event.inputs.path }} o:${{ github.event.inputs.path }} --verbose --log-file=rclone.log || true
+        rclone copy p:${{ github.event.inputs.path }} o:${{ github.event.inputs.path }} --verbose --log-file=rclone.log || true
         cat rclone.log
 
   
